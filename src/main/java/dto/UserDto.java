@@ -1,12 +1,16 @@
 package dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.UniqueConstraint;
+
+
 
 @Entity
 public class UserDto {
@@ -63,6 +67,21 @@ public class UserDto {
 		this.age = age;
 	}
 	
+	
+	@OneToMany
+	List<Task> tasks;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public List<Task> getTasks() {
+		return tasks;
+	}
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
 	
 
 }

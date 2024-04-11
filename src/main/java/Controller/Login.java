@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Service.UserService;
 import dao.UserDao;
+import dto.UserDto;
 
 @WebServlet("/login")
 public class Login extends HttpServlet{
@@ -23,6 +24,9 @@ public class Login extends HttpServlet{
 		  UserDao dao=new UserDao();
 		  req.getSession().setAttribute("user", dao.findByEmail(email));
 		  resp.getWriter().print("<h1 align='center' style='color:green' > Login success!</h1>");
+		  UserDto dto=dao.findByEmail(email);
+			//Adding user to session
+			req.getSession().setAttribute("user",dto);
 		  req.getRequestDispatcher("Home.jsp").include(req,resp);
 		  
 	  }
